@@ -1,0 +1,42 @@
+<!-- views/adminDash/event/listEvents.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+    <!-- Include your CSS file here -->
+    <style>
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Adjust the gap between event cards */
+            justify-content: space-around; /* Center the cards horizontally */
+        }
+
+        li {
+            width: calc(30% - 20px); /* Adjust the width of each event card */
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+    <!-- Add Event button -->
+    <a href="/adminDash/event/add-event-form">Add Event</a>
+    
+    <div>
+        <% events.forEach(function(event) { %>
+            <div class="event-card">
+                <img src="<%= event.imageUrl %>" alt="<%= event.title %> Image">
+                <h2><%= event.title %></h2>
+                <p><%= event.description %></p>
+                <p>Date: <%= event.date.toDateString() %></p>
+                <p>Mentor: <%= event.mentorName %></p>
+                <!-- You can customize the content and styling as needed -->
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
