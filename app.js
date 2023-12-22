@@ -16,8 +16,10 @@ const menteeDashController = require('./controllers/menteeDashController');
 const adminEventController = require('./controllers/adminEventController');
 const Resume = require('./models/resume');
 const User = require('./models/user');
-const Event = require('./models/event');
+const Event = require('./models/adminEvents'); // Corrected model import
 const Mentor = require('./models/adminMentor');
+const upload = require('./middlewares/upload');
+const Mentee = require('./models/adminMentee');
 
 // Set the view engine
 app.set('view engine', 'ejs');
@@ -46,14 +48,12 @@ mongoose.connect('mongodb+srv://ttsomondo:12345@cluster0.bjleuz6.mongodb.net/?re
 // Set up multer for handling file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/media/'); // Set the destination folder for file uploads
+    cb(null, 'public/uploads/'); // Set the destination folder for file uploads
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname)); // Rename the file to avoid conflicts
   },
 });
-
-const upload = multer({ storage: storage });
 
 // Index Controller Routes
 app.get('/', indexController.renderHomePage);
@@ -84,6 +84,7 @@ app.get('/adminDash/event/add-event-form', adminEventController.addEventForm);
 app.post('/adminDash/event/add-event', upload.single('image'), adminEventController.createEvent);
 app.get('/adminDash/event/list-events', adminEventController.listEvents);
 app.get('/events', adminEventController.listEvents);
+app.get('/adminDash/event/delete-event/:id', adminEventController.deleteEvent);
 
 // Login Controller Routes
 app.get('/login', loginController.renderLoginPage);

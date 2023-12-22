@@ -2,24 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Events</title>
-    <!-- Include your CSS file here -->
-    <style>
-        ul {
-            list-style-type: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* Adjust the gap between event cards */
-            justify-content: space-around; /* Center the cards horizontally */
-        }
-
-        li {
-            width: calc(30% - 20px); /* Adjust the width of each event card */
-            border: 1px solid #ddd;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-    </style>
+    <link rel="stylesheet" href="/listEvents.css">
 </head>
 <body>
     <h1>Upcoming Events</h1>
@@ -29,12 +12,18 @@
     <div>
         <% events.forEach(function(event) { %>
             <div class="event-card">
-                <img src="<%= event.imageUrl %>" alt="<%= event.title %> Image">
-                <h2><%= event.title %></h2>
-                <p><%= event.description %></p>
-                <p>Date: <%= event.date.toDateString() %></p>
-                <p>Mentor: <%= event.mentorName %></p>
-                <!-- You can customize the content and styling as needed -->
+                <img src="/media/<%= event.image %>" alt="<%= event.title %> Image">
+                <h2><%= event.name %></h2>
+                <p><strong>Category:</strong> <%= event.category %></p>
+                <p><strong>Description:</strong> <%= event.description %></p>
+                <p><strong>Organizer:</strong> <%= event.organizer %></p>
+                <p><strong>Venue:</strong> <%= event.venue %></p>
+                <p><strong>Time:</strong> <%= event.time %></p>
+                <!-- Edit and Delete links -->
+                <p>
+                    <a href="/adminDash/event/edit-event/<%= event._id %>">Edit</a>
+                    <a href="/adminDash/event/delete-event/<%= event._id %>">Delete</a>
+                </p>
             </div>
         <% }); %>
     </div>
