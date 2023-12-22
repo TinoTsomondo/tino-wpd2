@@ -6,7 +6,7 @@ module.exports = {
       const data = {
         pageTitle: 'Home Page',
         logoPath: '/media/logo.png',
-        homeLink: 'index.ejs',
+        homeLink: '/',
         loginLink: 'login.ejs',
         aboutUsLink: 'about.ejs',
         firstPartImage: '/media/home.svg',
@@ -18,11 +18,11 @@ module.exports = {
       res.render('index', data);
     },
   
-    aboutUs(req, res) {
+    renderaboutUs(req, res) {
       const data = {
         pageTitle: 'About Us',
         logoPath: '/media/logo.png',
-        homeLink: 'index.ejs',
+        homeLink: '/',
         loginLink: 'login.ejs',
         aboutUsLink: 'about.ejs',
         firstPartImage: './media/First Part About Us.svg',

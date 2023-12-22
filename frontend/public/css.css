@@ -10,33 +10,49 @@ body, h1, h2, h3, p, ul, li {
     font-family: Arial, sans-serif;
   }
   
-  .container1 {
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar img {
-    height: 50px; /* Adjust the height based on your logo size */
-  }
-  
-  .navbar nav ul {
-    list-style-type: none;
-    display: flex;
-  }
-  
-  .navbar nav ul li {
-    margin-right: 20px;
-  }
+ /* Styles for the first container */
+ .container1 {
+  position: fixed; /* Make the container fixed */
+  top: 0; /* Stick it to the top */
+  left: 0; /* Stick it to the left */
+  background-color: white;
+  padding-top: 20px;
+  padding-right: 20px;
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar img {
+  height: 100px; /* Adjust the height based on your logo size */
+}
+
+.navbar nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.navbar nav ul li {
+  margin-right: 20px;
+}
+
+.imgbgd {
+  padding-top: 100Px;
+  display: flex;
+  width: 100%;
+  height: 25%;
+}
+
   
   .container2 {
     text-align: center;
     margin-top: 20px;
+    padding-top: 100px;
   }
   
   .responsive-button {
